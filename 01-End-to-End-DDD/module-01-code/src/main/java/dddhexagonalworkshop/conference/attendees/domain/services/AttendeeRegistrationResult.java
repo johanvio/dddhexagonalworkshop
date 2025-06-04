@@ -6,5 +6,5 @@ import dddhexagonalworkshop.conference.attendees.domain.events.AttendeeRegistere
 /**
  * This object is used to return the result of an attendee registration and contains the objects created by the Aggregate.
  */
-public record AttendeeRegistrationResult() {
+public record AttendeeRegistrationResult(Attendee attendee, AttendeeRegisteredEvent attendeeRegisteredEvent) {
 }

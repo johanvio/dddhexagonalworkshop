@@ -12,4 +12,21 @@ import dddhexagonalworkshop.conference.attendees.domain.services.AttendeeRegistr
  * boundary for attendee-related operations.
  */
 public class Attendee {
+
+    String email;
+
+    private Attendee(String email) {
+    }
+
+    public static AttendeeRegistrationResult registerAttendee(String email) {
+        // Here you would typically perform some business logic, like checking if the attendee already exists
+        // and then create an event to publish.
+        Attendee attendee = new Attendee(email);
+        AttendeeRegisteredEvent event = new AttendeeRegisteredEvent(email);
+        return new AttendeeRegistrationResult(attendee, event);
+    }
+
+    public String getEmail(){
+        return email;
+    }
 }
