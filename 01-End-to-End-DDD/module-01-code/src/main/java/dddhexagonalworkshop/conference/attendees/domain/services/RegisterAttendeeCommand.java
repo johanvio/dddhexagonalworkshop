@@ -8,4 +8,19 @@ package dddhexagonalworkshop.conference.attendees.domain.services;
  * This command is used to initiate the registration process for an attendee.
  */
 public record RegisterAttendeeCommand(String email) {
+    
+    /**
+     * Compact constructor for validation.
+     * This runs automatically when the record is created.
+     */
+    public RegisterAttendeeCommand {
+        if (email == null || email.isBlank()) {
+            throw new IllegalArgumentException("Email cannot be null or blank");
+        }
+        
+        // Basic email format validation
+        if (!email.contains("@")) {
+            throw new IllegalArgumentException("Email must contain @ symbol");
+        }
+    }
 }
